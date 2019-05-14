@@ -27,10 +27,10 @@ class Igra:
 		return self.stevilo_napak() >= STEVILO_DOVOLJENIH_NAPAK
 		
 ## TESTNI PROGRAM ##
-# igra = Igra("nekaj")
-# igra.crke = ['a','l','v','n','x','e','k','j']
-# print(igra.napacne_crke())
-# print(igra.pravilne_crke())
-# print(igra.stevilo_napak())
-# print(igra.zmaga()) 
-# print(igra.poraz())
+igra = Igra("nekaj")
+igra.crke = ['a','l','v','n','x','e','k','j']
+print(igra.napacne_crke())
+print(igra.pravilne_crke())
+print(igra.stevilo_napak())
+print(igra.zmaga()) 
+print(igra.poraz())
