@@ -58,7 +58,7 @@ class Igra:
 			return PORAZ
 		return NAPACNA_CRKA
 		
-def nova_igra(self):
+def nova_igra():
 	geslo = random.choice(bazen_besed)
 	return Igra(geslo)
 

@@ -10,14 +10,14 @@ Neuspeli poskusi: {1}
     )
     return teskt
 
-def izpis_zmage():
+def izpis_zmage(igra):
     tekst = """
 ###### BRAVO! Uganil si geslo '{0}' #######
 """.format(
         igra.geslo
 )
 
-def izpis_poraza():
+def izpis_poraza(igra):
     tekst = """
 !!!!!! JOOOOJ! Porabil si vse poskuse. Geslo je '{0}' !!!!!!!
 """.format(
@@ -29,4 +29,4 @@ def izpis_poraza():
 
 igra = model.nova_igra()
 print(izpis_igre(igra))
-pritn(izpis_zmage(igra))
+print(izpis_zmage(igra))
