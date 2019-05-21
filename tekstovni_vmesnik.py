@@ -16,6 +16,7 @@ def izpis_zmage(igra):
 """.format(
         igra.geslo
 )
+    return tekst
 
 def izpis_poraza(igra):
     tekst = """
@@ -30,3 +31,4 @@ def izpis_poraza(igra):
 igra = model.nova_igra()
 print(izpis_igre(igra))
 print(izpis_zmage(igra))
+print(izpis_poraza(igra))
