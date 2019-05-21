@@ -15,6 +15,6 @@
   <form action="/igra/" method="get">
     <button type="submit">Nova igra</button>
   </form>
-</body>
+
 
 </html>
