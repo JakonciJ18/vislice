@@ -3,10 +3,13 @@ import model
 def izpis_igre(igra):
     teskt = """
 Število preostalih poskusov: {0}
-Neuspeli poskusi: {1}
+{1}
+Napačne črke ({2}): {3}
     """.format(
         model.STEVILO_DOVOLJENIH_NAPAK - igra.stevilo_napak() + 1,
-        igra.stevilo_napak()
+        igra.pravilni_del_gesla(),
+        igra.stevilo_napak(),
+        igra.nepravilni_ugibi(),
     )
     return teskt
 
@@ -26,9 +29,30 @@ def izpis_poraza(igra):
 )
     return tekst
 
+def zahtevaj_vnos():
+    return input("Vnesi črko: ")
+
+def pozeni_vmesnik():
+    igra = model.nova_igra()
+    while True:
+        print(izpis_igre(igra))
+        crka = zahtevaj_vnos()
+        if len(crka) != 1:
+            print("Ne me *****!")
+            continue
+        rez = igra.ugibaj(crka)
+        if rez == model.ZMAGA:
+            print(izpis_zmage(igra))
+            return
+        if rez == model.PORAZ:
+            print(izpis_poraza(igra))
+            return
+
+
 ###########
 
-igra = model.nova_igra()
-print(izpis_igre(igra))
-print(izpis_zmage(igra))
-print(izpis_poraza(igra))
+pozeni_vmesnik()
+#igra = model.nova_igra()
+#print(izpis_igre(igra))
+#print(izpis_zmage(igra))
+#print(izpis_poraza(igra))
