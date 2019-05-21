@@ -9,7 +9,7 @@ ZMAGA = 'W'
 PORAZ = 'X'
 
 with open('besede.txt') as f:
-	bazen_besed = f.readlines()
+	bazen_besed = [beseda.strip() for beseda in f.readlines()]
 
 class Igra:
 	def __init__(self,geslo):
@@ -60,7 +60,6 @@ class Igra:
 		
 def nova_igra(self):
 	geslo = random.choice(bazen_besed)
-	print(geslo)
 	return Igra(geslo)
 
 
