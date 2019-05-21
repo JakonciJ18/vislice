@@ -1,3 +1,5 @@
+import random
+
 STEVILO_DOVOLJENIH_NAPAK = 10
 PRAVILNA_CRKA = '+'
 PONOVLJENA_CRKA = 'o'
@@ -6,9 +8,12 @@ NAPACNA_CRKA = '-'
 ZMAGA = 'W'
 PORAZ = 'X'
 
+with open('besede.txt') as f:
+	bazen_besed = f.readlines()
+
 class Igra:
 	def __init__(self,geslo):
-		self.geslo = geslo
+		self.geslo = geslo.upper()
 		self.crke = []
 
 	def napacne_crke(self):
@@ -21,14 +26,14 @@ class Igra:
 		return len(self.napacne_crke())
 		
 	def zmaga(self):
-		return all(c in self.crke for c in self.geslo)
+		return all(c in self.crke for c in self.geslo.upper())
 	
 	def poraz(self):
 		return self.stevilo_napak() >= STEVILO_DOVOLJENIH_NAPAK
 	
 	def pravilni_del_gesla(self):
 		novi = ''
-		for c in self.geslo:
+		for c in self.geslo.upper():
 			if c in self.crke:
 				novi += c
 			else:
@@ -42,7 +47,7 @@ class Igra:
 		crka = crka.upper()
 		if crka in self.crke:
 			return PONOVLJENA_CRKA
-		if crka in self.geslo():
+		if crka in self.geslo:
 			self.crke.append(crka)
 			if self.zmaga():
 				return ZMAGA
@@ -51,14 +56,25 @@ class Igra:
 		self.crke.append(crka)
 		if self.poraz():
 			return PORAZ
+		return NAPACNA_CRKA
+		
+def nova_igra(self):
+	geslo = random.choice(bazen_besed)
+	print(geslo)
+	return Igra(geslo)
+
+
+# print(bazen_besed[0])
+# print(bazen_besed[-1])
 		
 ## TESTNI PROGRAM ##
-igra = Igra("nekaj")
-igra.crke = ['a','l','v','n','x']
-print(igra.napacne_crke())
-print(igra.pravilne_crke())
-print(igra.stevilo_napak())
-print(igra.zmaga()) 
-print(igra.poraz())
-print(igra.pravilni_del_gesla())
-print(igra.nepravilni_ugibi())
+#igra = Igra("nekaj")
+#igra.crke = ['A','L','V','N','X']
+#print(igra.napacne_crke())
+#print(igra.pravilne_crke())
+#print(igra.stevilo_napak())
+#print(igra.zmaga()) 
+#print(igra.poraz())
+#print(igra.pravilni_del_gesla())
+#print(igra.nepravilni_ugibi())
+#print(igra.ugibaj('k'))
