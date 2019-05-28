@@ -22,10 +22,22 @@
   </tr>
  </table>
 
- <form action="/igra/{{id_igre}}/" method="post">
-  Črka: <input type="text" name="crka"> 
+ % if igra.zmaga():
+  <span>Čestitke! Zmagal/a si!</span>
+  <form action="/igra/" method="post">
+  <button type="submit">Nova igra</button>
+  </form>
+ % elif igra.poraz():
+  <span>Sožalje, več sreče prihodnjič!</span>
+  <form action="/igra/" method="post">
+  <button type="submit">Nova igra</button>
+  </form>
+ % else:
+  <form action="/igra/{{id_igre}}/" method="post">
+    Črka: <input type="text" name="crka" autofocus="true"> 
   <button type="submit">Pošlji ugib</button>
-</form>
+  </form>
+ % end
 
 </body>
 
